@@ -1,0 +1,10 @@
+{% extends 'teacherUser/baseTemplate.html' %}
+
+
+{% block content %}
+{% include 'teacherUser/navbar.html' %}
+    welcome {{username}} teacher 
+    {% for a in data %}
+    {{a.subject}}
+    {% endfor %}
+{% endblock %}

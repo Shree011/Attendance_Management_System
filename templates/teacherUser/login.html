@@ -1,0 +1,25 @@
+{% extends 'teacherUser/baseTemplate.html' %}
+{% block content %}
+<div class="contianer text-dark mt-5">
+    
+    <form class="container w-50 p-4" method="post" action="login">
+        {% csrf_token %}
+        <h4>Login Form</h4> 
+        <hr>
+        <div class="mb-3 mt-5">
+          <label for="exampleDropdownFormEmail2" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="exampleDropdownFormPassword2" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+</div>
+<div>
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+</div>
+{% endblock %}

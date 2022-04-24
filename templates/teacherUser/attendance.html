@@ -1,0 +1,108 @@
+{% extends 'teacherUser/baseTemplate.html' %}
+
+
+{% block content %}
+{% include 'teacherUser/navbar.html' %}
+    {{teach_username}}
+    Attendance
+    {% for a in data %}
+    {{a.subject}}
+    {% endfor %}
+
+    
+    <br>
+    <form method="get" action="attendance" class="container">
+        <table class="table table-borderless">
+        <tr>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="class" value="FE" >FE
+            </div>
+        </td>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="class" value="SE">SE
+            </div>
+        </td>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="class" value="TE">TE
+            </div>
+        </td>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="class" value="BE">BE
+            </div>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="4">
+            <div class="position-relative">
+                <div class="position-absolute top-50 start-50">
+                    <button class="btn btn-primary mx-auto mx-4" type="Submit">Submit</button>
+                </div>
+            </div>
+        </td>
+      </tr>
+        </table>
+    </form>
+    <form method="post" action="attendance">
+        {% csrf_token %}
+    <div class="container table-responsive mt-5">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Roll no</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Class</th>
+            <th scope="col" class="mx-auto" colspan="2">Attendance</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td >Present </td>
+                <td>Absent</td>
+            </tr>
+            {% for student in studentsData %}
+          <tr>
+            <th scope="row">{{student.roll_no}}</th>
+            <td>{{student.stud_name}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.stud_class}}</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="attendance{{student.id}}" value="Present" id="flexRadioDefault1">
+                  </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="attendance{{student.id}}" value="Absent" id="flexRadioDefault2">
+                </div>
+            </td>
+          </tr>
+          <input name="last_roll[]" hidden value="{{student.id}}">
+            {% endfor %}
+            
+            <tr>
+                <td colspan="4"></td>
+                <td><input type="date" name="date"></td>
+                <td> 
+                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                </td>
+            </tr>
+
+        </tbody>
+      </table>
+    </div>
+    </form>
+    {% for message in messages %}
+    <div class="text-center">
+        <h4>{{message}}</h4>
+    </div>
+    {% endfor %}
+{% endblock %}

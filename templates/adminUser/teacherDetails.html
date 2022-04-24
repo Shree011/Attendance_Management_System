@@ -1,0 +1,34 @@
+{% extends 'adminUser/baseTemplate.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <table class="table table-striped table-hover align-middle table-responsive">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">username</th>
+            <th scope="col">email</th>
+            <th scope="col">phone</th>
+            <th scope="col">subject</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+          <tr>
+            <th scope="row">{{teacher.teach_name}}</th>
+            <td>{{teacher.username}}</td>
+            <td>{{teacher.email}}</td>
+            <td>{{teacher.phone_no}}</td>
+            <td>{{teacher.subject}}</td>
+          </tr>
+            {% endfor %}
+          <tr>
+            <td colspan="5">
+                <a class="btn btn-primary" href="{% url 'addTeach' %}" role="button">Add Teacher</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div> 
+{% endblock %}

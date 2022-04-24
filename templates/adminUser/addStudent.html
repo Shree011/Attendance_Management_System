@@ -1,0 +1,52 @@
+{% extends 'adminUser/baseTemplate.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5">
+        <div class="">
+        <h2>Student Data</h2>
+        <hr>
+        <form class="row g-3" method="post" action="{% url 'addStud' %}">
+            {% csrf_token %}
+            <div class="offset-2 col-md-3">
+              <label for="inputEmail4"   class="form-label">Roll no</label>
+              <input type="number" class="form-control" name="roll_no" id="inputEmail4" placeholder="Enter Roll no">
+            </div>
+            <div class="col-md-5">
+              <label for="inputPassword4" class="form-label">Name</label>
+              <input type="text" class="form-control" name="stud_name" id="inputPassword4" placeholder="Enter Name">
+            </div>
+            <div class="offset-2 col-8">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Enter Address">
+            </div>
+            <div class="offset-2 col-8">
+              <label for="inputAddress2" class="form-label">phone no</label>
+              <input type="number" class="form-control" name="phone_no" id="inputAddress2" placeholder="phone no">
+            </div>
+            <div class="offset-2 col-8">
+              <label for="inputAddress2" class="form-label">Class</label>
+              <input type="text" class="form-control" name="stud_class" id="inputAddress2" placeholder="FE, SE, TE, BE">
+            </div>
+            
+            <!-- <div class="col-md-4">
+              <label for="inputState" class="form-label">State</label>
+              <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div> -->
+            
+            <div class="offset-2 col-8">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+        <div class="mt-5">
+            {% for message in messages %}
+            <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

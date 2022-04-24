@@ -1,0 +1,64 @@
+{% extends 'adminUser/baseTemplate.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5">
+        <div class="">
+            <h2 class="container">Teachers Data</h2>
+            <hr>
+        <form class="row g-3" method="POST" action="{% url 'addTeach' %}">
+            {% csrf_token %}
+            
+            <div class="offset-2 col-4">
+              <label for="inputEmail4" class="form-label">First Name</label>
+              <input type="text" class="form-control" name="teach_name" id="inputEmail4" placeholder="First Name">
+            </div>
+            <div class="col-4">
+              <label for="inputPassword4" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last_name" id="inputPassword4" placeholder="Last Name">
+            </div>
+            <div class="offset-2 col-4">
+              <label for="inputAddress" class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" id="inputAddress" placeholder="username">
+            </div>
+            <div class="col-4">
+                <label for="inputAddress" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" id="inputAddress" placeholder="Enter Email">
+            </div>
+            <div class="offset-2 col-4">
+              <label for="inputAddress2" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password1" id="inputAddress2" placeholder="Password">
+            </div>
+            <div class="col-4">
+                <label for="inputAddress3" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="password2" id="inputAddress3" placeholder="Confirm Password">
+            </div>
+            <div class="offset-2 col-4">
+                <label for="inputAddress5" class="form-label">Phone no</label>
+                <input type="text" class="form-control" name="phone_no" id="inputAddress5" placeholder="phone no">
+            </div>
+            <div class="col-4">
+                <label for="inputAddress6" class="form-label">subject</label>
+                <input type="text" class="form-control" name="subject" id="inputAddress6" placeholder="subject">
+            </div>
+            
+            <!-- <div class="col-4">
+              <label for="inputState" class="form-label">State</label>
+              <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div> -->
+            
+            <div class="offset-2 col-8">
+              <button type="submit" class="btn btn-primary w-25" style="margin-left: 37.5%;">Add</button>
+            </div>
+        </form>
+        <div class="mt-5">
+            {% for message in messages %}
+            <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

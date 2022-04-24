@@ -1,0 +1,55 @@
+{% extends 'teacherUser/baseTemplate.html' %}
+{% block content %}
+{% include 'teacherUser/navbar.html' %}
+    <div class="container mt-5">
+        <form action="records" method="get">
+            <div class="row">
+                <div class="offset-4 col-3">
+                    <select class="form-select" name="stud_class" aria-label="Default select example">
+                        <option selected>Select Class</option>
+                        <option value="FE">FE</option>
+                        <option value="SE">SE</option>
+                        <option value="TE">TE</option>
+                        <option value="BE">BE</option>
+                      </select>
+                </div>
+                <div class="col-2">
+                    <button class="btn w-100 btn-primary">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                
+            </div>
+        </form>
+    </div>
+    
+    <div class="container mt-5">
+        <table class="table table-striped table-hover align-middle table-responsive">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">roll no</th>
+                <th scope="col">Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">attendance</th>
+                <th>View all</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+              <tr>
+                <th scope="row">{{record.0}}</th>
+                <td>{{record.1}}</td>
+                <td>{{record.2}}</td>
+                <td>{{record.3}} / {{total_attendance}}</td>
+                <td><a class="btn btn-primary" href="viewStudAtten/{{record.4}}" role="button">View</a></td>
+              </tr>
+                {% endfor %}
+                {{records.2.stud_class}}
+                {{present_attendance.2}} 
+            </tbody>
+          </table>
+    </div> 
+{% endblock %}
